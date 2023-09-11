@@ -16,3 +16,6 @@ SpringBoot
 H2 Database
 maven
 ```
+
+Postman api collection can be found here
+https://github.com/shamithakumari/crud-project/postman
