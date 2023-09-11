@@ -18,4 +18,4 @@ maven
 ```
 
 Postman api collection can be found here
-https://github.com/shamithakumari/crud-project/postman
+https://github.com/shamithakumari/crud-project/tree/main/postman
