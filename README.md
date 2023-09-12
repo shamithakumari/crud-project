@@ -1,12 +1,12 @@
 # Simple CRUD Operation Project
 
 ## Overview
-This is a sample Spring Boot project demonstrating CRUD operations (Create, Read, Update, Delete).
-* Insert data   `[POST /products/create]`
-* Delete data `[DELETE /products/delete/{id}]`
-* Update data `[PUT /products/update/{id}]`
+This is a simple Spring Boot project demonstrating CRUD operations (Create, Read, Update, Delete).
+* Insert data   `[POST /product/]`
+* Delete data `[DELETE /product/{id}]`
+* Update data `[PUT /product/{id}]`
 * View all data `[GET /products]`
-* View specific data `[GET /products/{id}]`
+* View specific data `[GET /product/{id}]`
 
 ## TechStack
 

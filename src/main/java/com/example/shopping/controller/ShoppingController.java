@@ -16,16 +16,16 @@ public class ShoppingController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/products/create")
+    @PostMapping("/product")
     public void addProduct(Product product){
         productService.insert(product);
     }
 
-    @DeleteMapping("/products/delete/{id}")
+    @DeleteMapping("/product/{id}")
     public void deleteProduct(@PathVariable("id") int id){
         productService.delete(id);
     }
-    @PutMapping("/products/update")
+    @PutMapping("/product")
     public void updateProduct(Product product){
         productService.update(product);
     }
@@ -35,7 +35,7 @@ public class ShoppingController {
         return productService.listAll();
     }
 
-    @GetMapping ("/products/{id}")
+    @GetMapping ("/product/{id}")
     @ResponseBody
     public Optional<Product> getProduct(@PathVariable("id") int id) {
         return productService.getById(id);
