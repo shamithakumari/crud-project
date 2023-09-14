@@ -118,7 +118,7 @@
 			"response": []
 		},
 		{
-			"name": "insert",
+			"name": "create",
 			"request": {
 				"method": "POST",
 				"header": [],

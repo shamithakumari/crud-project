@@ -15,19 +15,17 @@ public class ShoppingController {
     ProductRepo repo;
     @Autowired
     ProductService productService;
-
     @PostMapping("/product")
     public void addProduct(Product product){
         productService.insert(product);
     }
-
     @DeleteMapping("/product/{id}")
     public void deleteProduct(@PathVariable("id") int id){
         productService.delete(id);
     }
-    @PutMapping("/product")
-    public void updateProduct(Product product){
-        productService.update(product);
+    @PutMapping("/product/{id}")
+    public void updateProduct(@PathVariable("id") int id, Product product){
+        productService.update(id,product);
     }
     @GetMapping("/products")
     @ResponseBody

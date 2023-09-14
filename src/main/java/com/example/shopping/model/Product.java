@@ -1,8 +1,7 @@
 package com.example.shopping.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,15 +11,17 @@ import lombok.Setter;
 @Setter
 public class Product {
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
 
-    @Column
+    @Column(nullable = false)
     private String productName;
 
-    @Column
+    @Column(nullable = false)
     private String productCategory;
 
-    @Column
+    @Column(nullable = false)
     private double productPrice;
+
+
 }

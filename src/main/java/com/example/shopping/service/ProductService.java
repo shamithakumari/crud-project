@@ -2,6 +2,7 @@ package com.example.shopping.service;
 
 import com.example.shopping.model.Product;
 import com.example.shopping.repository.ProductRepo;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +19,17 @@ public class ProductService {
     public void insert(Product product){
         productRepo.save(product);
     }
-
     public void delete(int productId){
         productRepo.deleteById(productId);
     }
-
-    public void update(Product product){
-
-        productRepo.save(product);
+    public void update(int id,Product updateProduct){
+        Product currentProduct =productRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found"));
+        currentProduct.setProductName(updateProduct.getProductName());
+        currentProduct.setProductCategory(updateProduct.getProductCategory());
+        currentProduct.setProductPrice(updateProduct.getProductPrice());
+        productRepo.save(currentProduct);
     }
+
 
     public List<Product> listAll(){
         List<Product> products = new ArrayList<Product>();
