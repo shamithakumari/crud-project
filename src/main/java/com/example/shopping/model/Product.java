@@ -1,14 +1,13 @@
 package com.example.shopping.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +21,4 @@ public class Product {
 
     @Column(nullable = false)
     private double productPrice;
-
-
 }

@@ -15,25 +15,29 @@ public class ShoppingController {
     ProductRepo repo;
     @Autowired
     ProductService productService;
+
     @PostMapping("/product")
-    public void addProduct(Product product){
+    public void addProduct(Product product) {
         productService.insert(product);
     }
+
     @DeleteMapping("/product/{id}")
-    public void deleteProduct(@PathVariable("id") int id){
+    public void deleteProduct(@PathVariable("id") int id) {
         productService.delete(id);
     }
+
     @PutMapping("/product/{id}")
-    public void updateProduct(@PathVariable("id") int id, Product product){
-        productService.update(id,product);
+    public void updateProduct(@PathVariable("id") int id, Product product) {
+        productService.update(id, product);
     }
+
     @GetMapping("/products")
     @ResponseBody
     private List<Product> getAllProducts() {
         return productService.listAll();
     }
 
-    @GetMapping ("/product/{id}")
+    @GetMapping("/product/{id}")
     @ResponseBody
     public Optional<Product> getProduct(@PathVariable("id") int id) {
         return productService.getById(id);
