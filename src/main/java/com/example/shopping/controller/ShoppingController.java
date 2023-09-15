@@ -33,7 +33,7 @@ public class ShoppingController {
 
     @GetMapping("/products")
     @ResponseBody
-    private List<Product> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productService.listAll();
     }
 

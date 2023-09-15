@@ -10,7 +10,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -20,23 +19,23 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class ProductTesting {
+class ProductTests {
     @Autowired
     private ProductRepo repo;
 
     @Test
     @Order(1)
-    public void createTest() {
+    void createTest() {
         Product product = Product.builder().productName("pencil").productCategory("stationary").productPrice(50.00).build();
 
         repo.save(product);
         System.out.println(product.getProductId());
-        Assertions.assertThat(product.getProductId()).isGreaterThan(0);
+        Assertions.assertThat(product.getProductId()).isPositive();
     }
 
     @Test
     @Order(2)
-    public void getTest() {
+    void getTest() {
         System.out.println("bbbb");
         Product product = repo.findById(1).get();
         System.out.println("ooooo");
@@ -45,14 +44,14 @@ class ProductTesting {
 
     @Test
     @Order(3)
-    public void getAllTest() {
+    void getAllTest() {
         List<Product> products = repo.findAll();
-        Assertions.assertThat(products.size()).isGreaterThan(0);
+        Assertions.assertThat(products).isNotEmpty();
     }
 
     @Test
     @Order(4)
-    public void updateTest() {
+    void updateTest() {
         Product product = repo.findById(1).get();
         product.setProductName("book");
         Product updatedproduct = repo.save(product);
@@ -61,7 +60,7 @@ class ProductTesting {
 
     @Test
     @Order(5)
-    public void deleteTest() {
+    void deleteTest() {
         Product product = repo.findById(1).get();
         repo.delete(product);
         Optional<Product> tempProduct = repo.findByProductName("book");
